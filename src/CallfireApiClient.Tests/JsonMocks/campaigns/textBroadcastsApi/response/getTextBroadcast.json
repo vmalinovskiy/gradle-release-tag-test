@@ -1,0 +1,11 @@
+{
+  "id": 13,
+  "name": "Example API SMS",
+  "status": "STOPPED",
+  "lastModified": 1443380774000,
+  "fromNumber": "12135551100",
+  "localTimeRestriction": {
+    "enabled": false
+  },
+  "message": "Hello World!"
+}

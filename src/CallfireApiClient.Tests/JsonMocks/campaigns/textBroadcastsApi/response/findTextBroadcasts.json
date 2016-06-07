@@ -1,0 +1,28 @@
+{
+  "items": [
+    {
+      "id": 3,
+      "name": "Outbound SMS Broadcast",
+      "status": "FINISHED",
+      "lastModified": 1443333295000,
+      "fromNumber": "67076",
+      "localTimeRestriction": {
+        "enabled": false
+      },
+      "message": "This is a text broadcast",
+      "bigMessageStrategy": "DO_NOT_SEND"
+    },
+    {
+      "id": 13,
+      "name": "Example API SMS",
+      "status": "STOPPED",
+      "lastModified": 1443380774000,
+      "fromNumber": "12135551100",
+      "localTimeRestriction": {
+        "enabled": false
+      },
+      "message": "Hello World!"
+    }
+  ],
+  "totalCount": 2
+}
