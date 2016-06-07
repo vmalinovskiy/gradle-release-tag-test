@@ -4,11 +4,12 @@ using CallfireApiClient.Api.CallsTexts.Model.Request;
 using CallfireApiClient.Api.Common.Model;
 using System.Collections.Generic;
 using NUnit.Framework;
-using CallfireApiClient.IntegrationTests.Api;
+using CallfireApiClient.Api.Common.Model.Request;
 
-namespace CallfireApiClient.Tests.Integration.CallsTexts
+
+namespace CallfireApiClient.IntegrationTests.Api.CallsTexts
 {
-    [TestFixture, Ignore("temporary disabled")]
+    [TestFixture]
     public class TextsApiIntegrationTest : AbstractIntegrationTest
     {
         [Test]
@@ -38,7 +39,7 @@ namespace CallfireApiClient.Tests.Integration.CallsTexts
             var recipient1 = new TextRecipient { Message = "msg", PhoneNumber = "12132212384" };
             var recipient2 = new TextRecipient { Message = "msg", PhoneNumber = "12132212384" };
             var recipients = new List<TextRecipient> { recipient1, recipient2 };
-
+            
             IList<CallfireApiClient.Api.CallsTexts.Model.Text> texts = Client.TextsApi.Send(recipients, null, "items(id,fromNumber,state)");
             Console.WriteLine("Texts: " + texts);
 
@@ -46,6 +47,18 @@ namespace CallfireApiClient.Tests.Integration.CallsTexts
             Assert.NotNull(texts[0].Id);
             Assert.IsNull(texts[0].CampaignId);
             Assert.IsTrue(StateType.READY == texts[0].State || StateType.FINISHED == texts[0].State);
+
+            recipient1.Message = null;
+            var request = new SendTextsRequest
+            {
+                Recipients = recipients,
+                CampaignId = 7415135003,
+                DefaultMessage = "DefaultLiveMessage",
+                Fields = "items(id,fromNumber,state)"
+            };
+            texts = Client.TextsApi.Send(request);
+            CallfireApiClient.Api.CallsTexts.Model.Text text = Client.TextsApi.Get((long)texts[0].Id);
+            Assert.AreEqual(text.Message, "DefaultLiveMessage");
         }
     }
 }

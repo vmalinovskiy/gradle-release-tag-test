@@ -1,5 +1,4 @@
-﻿using CallfireApiClient;
-using System;
+﻿using System;
 using System.Configuration;
 
 namespace CallfireApiClient.IntegrationTests.Api

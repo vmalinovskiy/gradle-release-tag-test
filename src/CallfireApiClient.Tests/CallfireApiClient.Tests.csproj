@@ -32,22 +32,6 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="nunit.core, Version=2.6.4.14350, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\NUnitTestAdapter.2.0.0\lib\nunit.core.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="nunit.core.interfaces, Version=2.6.4.14350, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\NUnitTestAdapter.2.0.0\lib\nunit.core.interfaces.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="nunit.util, Version=2.6.4.14350, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\NUnitTestAdapter.2.0.0\lib\nunit.util.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="NUnit.VisualStudio.TestAdapter, Version=2.0.0.0, Culture=neutral, PublicKeyToken=4cb40d35494691ac, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\NUnitTestAdapter.2.0.0\lib\NUnit.VisualStudio.TestAdapter.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="nunit.framework">
@@ -67,6 +51,7 @@
     <Compile Include="Api\Account\OrdersApiTest.cs" />
     <Compile Include="Api\Account\MeApiTest.cs" />
     <Compile Include="Api\AbstractApiTest.cs" />
+    <Compile Include="Api\CallsTexts\CallRecording.cs" />
     <Compile Include="Api\CallsTexts\MediaApiTest.cs" />
     <Compile Include="Api\CallsTexts\TextsApiTest.cs" />
     <Compile Include="Api\CallsTexts\CallsApiTest.cs" />
@@ -94,14 +79,21 @@
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
     <None Include="CallfireApiClient.Tests.csproj" />
+    <None Include="JsonMocks\callstexts\callsApi\response\getCallRecording.json" />
+    <None Include="JsonMocks\callstexts\callsApi\response\getCallRecordings.json" />
     <None Include="JsonMocks\callstexts\mediaApi\response\getMedia.json" />
     <None Include="JsonMocks\callstexts\mediaApi\response\uploadSound.json" />
     <None Include="JsonMocks\campaigns\callBroadcastsApi\request\createIvrBroadcast.json" />
     <None Include="JsonMocks\campaigns\callBroadcastsApi\request\updateIvrBroadcast.json" />
     <None Include="JsonMocks\campaigns\callBroadcastsApi\response\createIvrBroadcast.json" />
-    <None Include="packages.config">
-      <SubType>Designer</SubType>
+    <None Include="JsonMocks\campaigns\campaignSoundsApi\response\uploadSoundWithDetails.json" />
+    <None Include="JsonMocks\webhooks\webhooksApi\response\findSpecificWebhookResource.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="JsonMocks\webhooks\webhooksApi\response\findWebhookResources.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="packages.config" />
     <None Include="JsonMocks\common\sampleErrorMessage.json" />
     <None Include="JsonMocks\contacts\contactsApi\request\createContactsList.csv" />
     <None Include="JsonMocks\contacts\contactsApi\request\updateContactList.json" />
