@@ -162,6 +162,15 @@ task integrationTests (type: com.ullink.gradle.nunit.NUnit) {
 }
 integrationTests.dependsOn msbuildForIntegrationTests
 
+release {
+	failOnCommitNeeded = false
+	tagTemplate = '$version'
+	git {
+        requireBranch = 'master'
+        pushToRemote = 'origin'
+    }
+}
+
 // nuget package upload, requires API key to be set
 nugetPush {
     apiKey = System.properties[ 'NUGET_API_KEY' ] ?: "key not set"
